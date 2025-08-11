@@ -29,28 +29,28 @@ body {
   height: 100%;
 }
 
-.card.star {
+.card[data-card-type="star"] {
   background-image: url(star.png);
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
 }
 
-.card.moon {
+.card[data-card-type="moon"] {
   background-image: url(moon.png);
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
 }
 
-.card.heart {
+.card[data-card-type="heart"] {
   background-image: url(heart.png);
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
 }
 
-.card.diamond {
+.card[data-card-type="diamond"] {
   background-image: url(diamond.png);
   background-repeat: no-repeat;
   background-position-x: center;

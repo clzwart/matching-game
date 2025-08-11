@@ -1,3 +1,38 @@
+const cardArr = [
+  "heart",
+  "star",
+  "moon",
+  "diamond",
+  "heart",
+  "star",
+  "moon",
+  "diamond",
+];
+
+function shuffleCards(arr) {
+  for (let i = arr.length - 1; i >= 1; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+}
+
+shuffleCards(cardArr);
+
+function renderCards(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let cardContainer = document.getElementById("card-container");
+    let card = document.createElement("div");
+    cardContainer.appendChild(card);
+    card.classList.add("card");
+    card.classList.add("face-down");
+    card.setAttribute("data-card-type", arr[i]);
+  }
+}
+
+renderCards(cardArr);
+
 document.querySelectorAll(".card").forEach((element) => {
   element.onclick = flipCard;
 });
@@ -24,7 +59,7 @@ function flipCard(event) {
         element.classList.remove("selected");
       });
       cardClickDisabled = false;
-    }, 7000);
+    }, 5000);
   }
 
   if (matchingSelectedCards.length % 2 === 0) {
@@ -35,6 +70,6 @@ function flipCard(event) {
         element.classList.remove("selected");
       });
       cardClickDisabled = false;
-    }, 7000);
+    }, 5000);
   }
 }
