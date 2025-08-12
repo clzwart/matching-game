@@ -1,4 +1,4 @@
-const cardArr = [
+const cardTypes = [
   "heart",
   "star",
   "moon",
@@ -10,15 +10,15 @@ const cardArr = [
 ];
 
 function shuffleCards(arr) {
-  for (let i = arr.length - 1; i >= 1; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+  for (let currentIndex = arr.length - 1; currentIndex >= 1; currentIndex--) {
+    const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+    const temp = arr[currentIndex];
+    arr[currentIndex] = arr[randomIndex];
+    arr[randomIndex] = temp;
   }
 }
 
-shuffleCards(cardArr);
+shuffleCards(cardTypes);
 
 function renderCards(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -31,7 +31,7 @@ function renderCards(arr) {
   }
 }
 
-renderCards(cardArr);
+renderCards(cardTypes);
 
 document.querySelectorAll(".card").forEach((element) => {
   element.onclick = flipCard;
