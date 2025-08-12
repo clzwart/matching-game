@@ -21,14 +21,14 @@ function shuffleCards(arr) {
 shuffleCards(cardTypes);
 
 function renderCards(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let cardContainer = document.getElementById("card-container");
-    let card = document.createElement("div");
+  const cardContainer = document.getElementById("card-container");
+  arr.forEach((currentElement) => {
+    const card = document.createElement("div");
     cardContainer.appendChild(card);
     card.classList.add("card");
     card.classList.add("face-down");
-    card.setAttribute("data-card-type", arr[i]);
-  }
+    card.setAttribute("data-card-type", currentElement);
+  });
 }
 
 renderCards(cardTypes);
