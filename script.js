@@ -9,39 +9,14 @@ const cardTypes = [
   "diamond",
 ];
 
-// function resetCards(cardNames) {
-//   function shuffleCards(cardNames) {
-//     for (
-//       let currentIndex = cardNames.length - 1;
-//       currentIndex >= 1;
-//       currentIndex--
-//     ) {
-//       const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
-//       const temp = cardNames[currentIndex];
-//       cardNames[currentIndex] = cardNames[randomIndex];
-//       cardNames[randomIndex] = temp;
-//     }
-//   }
+function resetCards(cardNames) {
+  shuffleCards(cardNames);
+  renderCards(cardNames);
+}
 
-//   shuffleCards(cardNames);
-
-//   function renderCards(cardNames) {
-//     const cardContainer = document.getElementById("card-container");
-//     cardNames.forEach((currentElement) => {
-//       const card = document.createElement("div");
-//       cardContainer.appendChild(card);
-//       card.classList.add("card");
-//       card.classList.add("face-down");
-//       card.setAttribute("data-card-type", currentElement);
-//     });
-//   }
-
-//   renderCards(cardNames);
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   resetCards(cardTypes);
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  resetCards(cardTypes);
+});
 
 function shuffleCards(cardNames) {
   for (
@@ -56,8 +31,6 @@ function shuffleCards(cardNames) {
   }
 }
 
-shuffleCards(cardTypes);
-
 function renderCards(cardNames) {
   const cardContainer = document.getElementById("card-container");
   cardNames.forEach((currentElement) => {
@@ -67,13 +40,14 @@ function renderCards(cardNames) {
     card.classList.add("face-down");
     card.setAttribute("data-card-type", currentElement);
   });
+  setUpCardClickHandlers();
 }
 
-renderCards(cardTypes);
-
-document.querySelectorAll(".card").forEach((element) => {
-  element.onclick = flipCard;
-});
+function setUpCardClickHandlers() {
+  document.querySelectorAll(".card").forEach((element) => {
+    element.onclick = flipCard;
+  });
+}
 
 let cardClickDisabled = false;
 
