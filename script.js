@@ -33,13 +33,16 @@ function shuffleCards(cardNames) {
 
 function renderCards(cardNames) {
   const cardContainer = document.getElementById("card-container");
+  const newCardContainer = document.createElement("div");
+  newCardContainer.id = "card-container";
   cardNames.forEach((currentElement) => {
     const card = document.createElement("div");
-    cardContainer.appendChild(card);
+    newCardContainer.appendChild(card);
     card.classList.add("card");
     card.classList.add("face-down");
     card.setAttribute("data-card-type", currentElement);
   });
+  cardContainer.replaceWith(newCardContainer);
   setUpCardClickHandlers();
 }
 
