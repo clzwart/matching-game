@@ -9,20 +9,58 @@ const cardTypes = [
   "diamond",
 ];
 
-function shuffleCards(arr) {
-  for (let currentIndex = arr.length - 1; currentIndex >= 1; currentIndex--) {
+// function resetCards(cardNames) {
+//   function shuffleCards(cardNames) {
+//     for (
+//       let currentIndex = cardNames.length - 1;
+//       currentIndex >= 1;
+//       currentIndex--
+//     ) {
+//       const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+//       const temp = cardNames[currentIndex];
+//       cardNames[currentIndex] = cardNames[randomIndex];
+//       cardNames[randomIndex] = temp;
+//     }
+//   }
+
+//   shuffleCards(cardNames);
+
+//   function renderCards(cardNames) {
+//     const cardContainer = document.getElementById("card-container");
+//     cardNames.forEach((currentElement) => {
+//       const card = document.createElement("div");
+//       cardContainer.appendChild(card);
+//       card.classList.add("card");
+//       card.classList.add("face-down");
+//       card.setAttribute("data-card-type", currentElement);
+//     });
+//   }
+
+//   renderCards(cardNames);
+// }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   resetCards(cardTypes);
+// });
+
+function shuffleCards(cardNames) {
+  for (
+    let currentIndex = cardNames.length - 1;
+    currentIndex >= 1;
+    currentIndex--
+  ) {
     const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
-    const temp = arr[currentIndex];
-    arr[currentIndex] = arr[randomIndex];
-    arr[randomIndex] = temp;
+    const temp = cardNames[currentIndex];
+    cardNames[currentIndex] = cardNames[randomIndex];
+    cardNames[randomIndex] = temp;
   }
 }
 
 shuffleCards(cardTypes);
 
-function renderCards(arr) {
+function renderCards(cardNames) {
   const cardContainer = document.getElementById("card-container");
-  arr.forEach((currentElement) => {
+  cardNames.forEach((currentElement) => {
     const card = document.createElement("div");
     cardContainer.appendChild(card);
     card.classList.add("card");
