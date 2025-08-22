@@ -1,6 +1,56 @@
-document.querySelectorAll(".card").forEach((element) => {
-  element.onclick = flipCard;
+const cardTypes = [
+  "heart",
+  "star",
+  "moon",
+  "diamond",
+  "heart",
+  "star",
+  "moon",
+  "diamond",
+];
+
+function resetCards(cardNames) {
+  shuffleCards(cardNames);
+  renderCards(cardNames);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  resetCards(cardTypes);
 });
+
+function shuffleCards(cardNames) {
+  for (
+    let currentIndex = cardNames.length - 1;
+    currentIndex >= 1;
+    currentIndex--
+  ) {
+    const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+    const temp = cardNames[currentIndex];
+    cardNames[currentIndex] = cardNames[randomIndex];
+    cardNames[randomIndex] = temp;
+  }
+}
+
+function renderCards(cardNames) {
+  const cardContainer = document.getElementById("card-container");
+  const newCardContainer = document.createElement("div");
+  newCardContainer.id = "card-container";
+  cardNames.forEach((currentElement) => {
+    const card = document.createElement("div");
+    newCardContainer.appendChild(card);
+    card.classList.add("card");
+    card.classList.add("face-down");
+    card.setAttribute("data-card-type", currentElement);
+  });
+  cardContainer.replaceWith(newCardContainer);
+  setUpCardClickHandlers();
+}
+
+function setUpCardClickHandlers() {
+  document.querySelectorAll(".card").forEach((element) => {
+    element.onclick = flipCard;
+  });
+}
 
 let cardClickDisabled = false;
 
@@ -24,7 +74,7 @@ function flipCard(event) {
         element.classList.remove("selected");
       });
       cardClickDisabled = false;
-    }, 7000);
+    }, 5000);
   }
 
   if (matchingSelectedCards.length % 2 === 0) {
@@ -35,6 +85,6 @@ function flipCard(event) {
         element.classList.remove("selected");
       });
       cardClickDisabled = false;
-    }, 7000);
+    }, 5000);
   }
 }
