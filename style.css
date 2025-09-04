@@ -16,7 +16,6 @@ body {
   cursor: pointer;
 }
 
-/* Why do I need the ::before ? */
 .card.face-down::before {
   content: "";
   display: block;
@@ -56,10 +55,6 @@ body {
   background-position-x: center;
   background-position-y: center;
 }
-
-/* .card.selected {
-  background-color: gold;
-} */
 
 .hidden {
   opacity: 0;
